@@ -12,8 +12,7 @@ Late deliveries are a **regional problem, not a nationwide one, and they are ove
 - **Notebook (Google Colab):** https://colab.research.google.com/drive/1hc8F-lzPgV4BiJ2WdET9qrO_jM2oXjzP?usp=sharing
 - **Dashboard (Tableau Public):** https://public.tableau.com/app/profile/imanzi.levy/viz/VeridiLogisticsPerformanceAudit/Sheet1#1
 - **Presentation (slides):** https://docs.google.com/presentation/d/1qA8DzCuOtiMGkoqbfR7_jzX24Pxq-gd6/edit?usp=drive_link&ouid=115705528412653432573&rtpof=true&sd=true
-- **Video walkthrough (optional):** [PASTE YOUTUBE LINK or remove this line]
-
+  
 *The `.ipynb` notebook and an HTML/PDF export with all rendered charts are included in this repository.*
 
 ## C. Technical Explanation
@@ -22,7 +21,7 @@ Late deliveries are a **regional problem, not a nationwide one, and they are ove
 
 - **Type handling:** all date columns parsed to datetimes at load time, since the core analysis is date arithmetic.
 - **Duplicate reviews:** 551 orders carried more than one review; a naive join would have duplicated those orders and skewed every downstream percentage. I deduplicated to the **most recent review per order** (the customer's final verdict) and guarded the master table with asserts enforcing exactly one row per order after every merge.
-- **Missing values:** 768 orders have no review — kept via left joins so their delivery data still counts, excluded only from sentiment analysis. 2,965 orders were never delivered (canceled, unavailable, in transit); a delay is undefined for them, so they are flagged **"Not Delivered"** and excluded from delay statistics rather than silently dropped. Eight rows marked "delivered" but missing a delivery date (data entry gaps) are routed to the same flag by the classifier.
+- **Missing values:** 768 orders have no review kept via left joins so their delivery data still counts, excluded only from sentiment analysis. 2,965 orders were never delivered (canceled, unavailable, in transit); a delay is undefined for them, so they are flagged **"Not Delivered"** and excluded from delay statistics rather than silently dropped. Eight rows marked "delivered" but missing a delivery date (data entry gaps) are routed to the same flag by the classifier.
 - **Outliers kept deliberately:** some deliveries ran 100+ days late and some estimates were beaten by 100+ days. These are real events, not data errors removing them would delete exactly the failures this audit exists to find. They are retained and discussed in the notebook.
 - **Category translation (bonus story):** Portuguese categories translated via the dataset's official mapping file. Since orders can contain multiple items, I attach one category per order (the first item's) to preserve the one-row-per-order guarantee; ~2.2k orders lack a category (mostly canceled orders with no item records) and are excluded from category-level views only.
 
