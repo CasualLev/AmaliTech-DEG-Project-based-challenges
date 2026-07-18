@@ -10,9 +10,9 @@ Late deliveries are a **regional problem, not a nationwide one — and they are 
 
 ## B. Project Links
 
-- **Notebook (Google Colab):** [PASTE COLAB SHARE LINK — set to "Anyone with the link: Viewer"]
-- **Dashboard (Tableau Public):** [PASTE TABLEAU PUBLIC LINK]
-- **Presentation (slides):** [PASTE SLIDES/PDF LINK — "Anyone with the link can view"]
+- **Notebook (Google Colab):** https://colab.research.google.com/drive/1hc8F-lzPgV4BiJ2WdET9qrO_jM2oXjzP?usp=sharing
+- **Dashboard (Tableau Public):** https://public.tableau.com/app/profile/imanzi.levy/viz/VeridiLogisticsPerformanceAudit/Sheet1#1
+- **Presentation (slides):** https://docs.google.com/presentation/d/1qA8DzCuOtiMGkoqbfR7_jzX24Pxq-gd6/edit?usp=drive_link&ouid=115705528412653432573&rtpof=true&sd=true
 - **Video walkthrough (optional):** [PASTE YOUTUBE LINK or remove this line]
 
 *The `.ipynb` notebook and an HTML/PDF export with all rendered charts are included in this repository.*
